@@ -1,0 +1,19 @@
+{
+  "name": "Network-lab-reservations",
+  "description": "",
+  "main": "",
+  "authors": [
+    "KANISORN <firstziiz.k@gmail.com>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/firstziiz/Network-lab-reservations",
+  "private": true,
+  "directory" : "public/vendor/",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

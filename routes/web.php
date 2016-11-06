@@ -15,6 +15,11 @@ Route::get('/', function () {
   return view('welcome');
 });
 
-Route::get('/dashboard',function() {
-  return view('');
-});
+Route::get('auth/google', 'Auth\AuthController@redirectToProvider');
+Route::get('auth/google/callback', 'Auth\AuthController@handleProviderCallback');
+
+Route::get('/dashboard','LoginController@index');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index');
