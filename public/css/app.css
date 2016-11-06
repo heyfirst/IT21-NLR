@@ -1,9 +1,29 @@
 @import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);
-.reservation .btn {
+body {
+  background-color: #f1f2f6; }
+
+.reservation .fa {
+  font-size: 80px;
   position: relative; }
-  .reservation .btn .badge {
-    position: absolute;
-    background-color: #eee;
-    top: -5px; }
+
+.reservation .badge {
+  position: absolute;
+  font-size: 12px;
+  right: -5px;
+  top: -15px;
+  padding: 8px 15px;
+  border-radius: 26px; }
+
+.reservation .progress {
+  height: 6px;
+  margin-bottom: 14px; }
+
+.reservation h3 {
+  margin-top: 0; }
+
+.reservation .time {
+  font-weight: 300; }
+  .reservation .time span {
+    font-weight: 600; }
 
 /*# sourceMappingURL=app.css.map */

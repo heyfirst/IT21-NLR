@@ -1,10 +1,35 @@
+body {
+  background-color: rgb(241, 242, 246)
+}
+
 .reservation {
-  .btn {
+  .fa {
+    font-size: 80px;
     position: relative;
-    .badge {
-      position: absolute;
-      background-color: #eee;
-      top: -5px;
+  }
+
+  .badge {
+    position: absolute;
+    font-size: 12px;
+    right: -5px;
+    top: -15px;
+    padding: 8px 15px;
+    border-radius: 26px;
+  }
+
+  .progress {
+    height: 6px;
+    margin-bottom: 14px;
+  }
+
+  h3 {
+    margin-top: 0;
+  }
+
+  .time {
+    font-weight: 300;
+    span {
+      font-weight: 600;
     }
   }
 }

@@ -15,10 +15,8 @@ Route::get('/', function () {
   return view('welcome');
 });
 
-Route::get('auth/google', 'Auth\AuthController@redirectToProvider');
-Route::get('auth/google/callback', 'Auth\AuthController@handleProviderCallback');
-
 Route::get('/dashboard','LoginController@index');
+Route::get('/reservation', 'HomeController@reservation');
 
 Auth::routes();
 
