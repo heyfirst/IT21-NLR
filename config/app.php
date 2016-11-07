@@ -172,6 +172,8 @@ return [
         Laravel\Socialite\SocialiteServiceProvider::class,
         //
 
+        App\Providers\RepositoryServiceProvider::class,
+
         /*
          * Application Service Providers...
          */

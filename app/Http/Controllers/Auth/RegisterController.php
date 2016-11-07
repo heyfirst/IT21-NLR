@@ -6,6 +6,8 @@ use App\User;
 use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Socialite;
+use Auth;
 
 class RegisterController extends Controller
 {
@@ -27,7 +29,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/reservation';
 
     /**
      * Create a new controller instance.
@@ -67,5 +69,45 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);
+    }
+    /**
+     * Redirect the user to the GitHub authentication page.
+     *
+     * @return Response
+     */
+    public function redirectToProvider()
+    {
+        return Socialite::driver('facebook')->redirect();
+    }
+    /**
+     * Obtain the user information from GitHub.
+     *
+     * @return Response
+     */
+    public function handleProviderCallback()
+    {
+        // 1 check if the user exists in our database with facebook_id
+        // 2 if not create a new user
+        // 3 login this user into our application
+        try
+        {
+          $socialUser = Socialite::driver('facebook')->user();
+        }
+        catch (\Exception $e)
+        {
+            return redirect('/');
+        }
+        $user = User::where('facebook_id',$socialUser->getId())->first();
+
+        if(!$user)
+          $user = User::create([
+            'facebook_id' => $socialUser->getId(),
+            'name' => $socialUser->getName(),
+            'email' => $socialUser->getEmail(),
+          ]);
+
+          Auth::login($user, true);
+
+        return redirect()->to('/reservation');
     }
 }

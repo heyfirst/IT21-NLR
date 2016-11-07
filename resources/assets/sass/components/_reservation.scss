@@ -7,12 +7,14 @@ body {
     font-size: 80px;
     position: relative;
   }
-
+  .panel {
+    position: relative;
+  }
   .badge {
     position: absolute;
     font-size: 12px;
-    right: -5px;
-    top: -15px;
+    right: -18px;
+    top: -18px;
     padding: 8px 15px;
     border-radius: 26px;
   }

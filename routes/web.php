@@ -11,12 +11,14 @@
 |
 */
 
-Route::get('/', function () {
-  return view('welcome');
-});
+Route::get('/','HomeController@index');
+Route::get('/redirect', 'Auth\RegisterController@redirectToProvider');
+Route::get('/callback', 'Auth\RegisterController@handleProviderCallback');
 
-Route::get('/dashboard','LoginController@index');
-Route::get('/reservation', 'HomeController@reservation');
+Auth::routes();
+
+Route::get('/reservation', 'ReserveController@index');
+Route::get('/booking/{id}', 'BookingController@index');
 
 Auth::routes();
 

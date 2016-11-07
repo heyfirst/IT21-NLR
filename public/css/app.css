@@ -1,4 +1,7 @@
 @import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);
+.login .btn-facebook {
+  border-radius: 20px; }
+
 body {
   background-color: #f1f2f6; }
 
@@ -6,11 +9,14 @@ body {
   font-size: 80px;
   position: relative; }
 
+.reservation .panel {
+  position: relative; }
+
 .reservation .badge {
   position: absolute;
   font-size: 12px;
-  right: -5px;
-  top: -15px;
+  right: -18px;
+  top: -18px;
   padding: 8px 15px;
   border-radius: 26px; }
 
@@ -25,5 +31,32 @@ body {
   font-weight: 300; }
   .reservation .time span {
     font-weight: 600; }
+
+.booking h3 {
+  font-weight: 600;
+  margin-top: 0; }
+  .booking h3 span {
+    font-weight: 300; }
+
+.booking h3 {
+  margin-top: 0; }
+
+.booking .time {
+  font-weight: 300; }
+  .booking .time span {
+    font-weight: 600; }
+
+.booking .rack-list .btn {
+  border-radius: 25px; }
+
+.booking .rack-list h4 {
+  font-size: 24px;
+  margin: 4px 6px; }
+
+.booking .rack-list .fa {
+  padding-right: 6px; }
+
+.booking .rack-list .rack {
+  margin-bottom: 6px; }
 
 /*# sourceMappingURL=app.css.map */
