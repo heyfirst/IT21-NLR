@@ -36,8 +36,9 @@ class BookingController extends MainController
     if($this->BookingRepository->validateBooking($data) > 0)
       return array('reserved'=>true);
 
-    if($this->BookingRepository->validateDayBooking($user) > 0)
+    if($this->BookingRepository->validateDayBooking($user,$data) > 0)
       return array('isday'=>true);
+
 
     $result = $this->BookingRepository->booking($user,$data);
     return array('done'=>true);

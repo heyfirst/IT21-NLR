@@ -81,15 +81,18 @@ class BookingRepository implements BookingRepositoryInterface {
       return $valid;
     }
 
-    public function validateDayBooking($user){
-      $mytime = Carbon\Carbon::now();
+    public function validateDayBooking($user,$data){
+
+      $section = $this->section->where('section_id',$data['section_id'])->get()->first();
 
       $valid = $this->enroll
                 ->join('nl_sections','nl_sections.section_id','=','nl_enrolls.section_id')
                 ->where([
-                    ['id', '=', $user['id']],
-                    ['date', 'LIKE', "%".($mytime->toDateString())."%"],
-                ])->get()->count();
+                    ['nl_enrolls.id', '=', $user['id']],
+                    ['nl_sections.date', '=',$section['date']],
+                ])
+                ->get()
+                ->count();
       return $valid;
     }
 }
