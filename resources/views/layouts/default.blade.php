@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="/vendor/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="/vendor/bootflat_dist/bootflat.min.css">
     <link rel="stylesheet" href="/vendor/components-font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/vendor/sweetalert/dist/sweetalert.css">
     <link rel="stylesheet" href="/css/app.css">
 
     {{-- Head Script --}}
@@ -49,20 +50,14 @@
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Reservation</a></li>
+            <li class="active"><a href="/reservation">Reservation</a></li>
           </ul>
           @if (isset($user))
             <div class="navbar-right">
               <p class="navbar-text">Signed in as {{ $user['name'] }}</p>
-              <a class="btn btn-warning navbar-btn" href="{{ url('/logout') }}"
-                  onclick="event.preventDefault();
-                           document.getElementById('logout-form').submit();">
+              <a class="btn btn-warning navbar-btn" href="{{ url('/logout') }}">
                   Logout
               </a>
-
-              <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
-                  {{ csrf_field() }}
-              </form>
             </div>
           @endif
         </div>
@@ -73,7 +68,9 @@
     {{-- Scripting --}}
     <script type="text/javascript" src="/vendor/jquery/dist/jquery.min.js"></script>
     <script type="text/javascript" src="/vendor/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="/js/app.js"></script>
+    <script type="text/javascript" src="/vendor/sweetalert/dist/sweetalert.min.js"></script>
+    <script type="text/javascript" src="/js/script.js"></script>
+    {{-- <script type="text/javascript" src="/js/app.js"></script> --}}
 
   </body>
 </html>

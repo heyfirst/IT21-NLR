@@ -6,17 +6,15 @@ use App\Repositories\SectionRepositoryInterface;
 use Auth;
 use Illuminate\Http\Request;
 
-class ReserveController extends Controller
+class ReserveController extends MainController
 {
 
   protected $SectionRepository;
-  protected $user;
 
   public function __construct(SectionRepositoryInterface $SectionRepository)
   {
-    $this->middleware('auth');
+    parent::__construct();
     $this->SectionRepository = $SectionRepository;
-    $this->user = Auth::user();
   }
 
   public function index()
@@ -46,4 +44,5 @@ class ReserveController extends Controller
 
     return view('pages.reservation',$content);
   }
+
 }

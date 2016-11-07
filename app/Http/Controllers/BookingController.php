@@ -3,19 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Repositories\BookingRepositoryInterface;
-use Auth;
 use Illuminate\Http\Request;
+use Auth;
 
-class BookingController extends Controller
+class BookingController extends MainController
 {
 
   protected $SectionRepository;
 
   public function __construct(BookingRepositoryInterface $BookingRepository)
   {
-    $this->middleware('auth');
+    parent::__construct();
     $this->BookingRepository = $BookingRepository;
-    $this->user = Auth::user();
   }
 
   public function index($section = null)
@@ -23,9 +22,24 @@ class BookingController extends Controller
     $section = $this->BookingRepository->getSection($section);
 
     $content = array(
-      'section' => $section
+      'section' => $section,
+      'user' => Auth::user()
     );
 
     return view('pages.booking',$content);
+  }
+
+  public function bookingSeat(Request $request){
+    $user = Auth::user();
+    $data = $request->all();
+
+    if($this->BookingRepository->validateBooking($data) > 0)
+      return array('reserved'=>true);
+
+    if($this->BookingRepository->validateDayBooking($user) > 0)
+      return array('isday'=>true);
+
+    $result = $this->BookingRepository->booking($user,$data);
+    return array('done'=>true);
   }
 }

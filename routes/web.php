@@ -11,15 +11,20 @@
 |
 */
 
-Route::get('/','HomeController@index');
-Route::get('/redirect', 'Auth\RegisterController@redirectToProvider');
-Route::get('/callback', 'Auth\RegisterController@handleProviderCallback');
+Route::group(['middleware' => 'web'], function () {
+  Route::get('/','HomeController@index');
+  Route::get('/redirect', 'Auth\RegisterController@redirectToProvider');
+  Route::get('/callback', 'Auth\RegisterController@handleProviderCallback');
 
-Auth::routes();
+  // Authentication routes... added from the docs!
+  Route::get('logout', 'Auth\LoginController@logout');
 
-Route::get('/reservation', 'ReserveController@index');
-Route::get('/booking/{id}', 'BookingController@index');
+  Route::group(['middleware' => 'auth'], function () {
 
-Auth::routes();
+    Route::get('/reservation', 'ReserveController@index');
+    Route::get('/booking/{id}', 'BookingController@index');
+    Route::post('/booking/bookingseat', 'BookingController@bookingSeat');
 
-Route::get('/home', 'HomeController@index');
+  });
+
+});

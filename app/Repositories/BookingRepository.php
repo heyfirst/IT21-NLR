@@ -3,6 +3,7 @@ namespace App\Repositories;
 
 use App\Models\NL_section;
 use App\Models\NL_enroll;
+use Carbon;
 
 class BookingRepository implements BookingRepositoryInterface {
 
@@ -32,11 +33,61 @@ class BookingRepository implements BookingRepositoryInterface {
     }
 
     public function getRackBySection($id,$rack){
-      $result = $this->enroll->where([
-        ['section_id','=',$id],
-        ['rack','=',$rack]
-      ])->get()->first();
+      $result = array(
+          '1' => $this->enroll
+            ->join('users','users.id','=','nl_enrolls.id')
+            ->where([
+              ['section_id','=',$id],
+              ['rack','=',$rack],
+              ['seat','=','1']
+            ])->first(),
+          '2' => $this->enroll
+            ->join('users','users.id','=','nl_enrolls.id')
+            ->where([
+              ['section_id','=',$id],
+              ['rack','=',$rack],
+              ['seat','=','2']
+            ])->first(),
+          '3' => $this->enroll
+            ->join('users','users.id','=','nl_enrolls.id')
+            ->where([
+              ['section_id','=',$id],
+              ['rack','=',$rack],
+              ['seat','=','3']
+            ])->first()
+        );
 
       return $result;
+    }
+
+    public function booking($user,$data){
+      $id = $this->enroll->insertGetId([
+          'id' => $user['id'],
+          'section_id' => $data['section_id'],
+          'rack' => $data['rack'],
+          'seat' => $data['seat']
+        ]);
+
+      return $id;
+    }
+
+    public function validateBooking($data){
+      $valid = $this->enroll->where([
+                    ['section_id', '=', $data['section_id']],
+                    ['rack', '=', $data['rack']],
+                    ['seat', '=', $data['seat']]
+                ])->get()->count();
+
+      return $valid;
+    }
+
+    public function validateDayBooking($user){
+      $mytime = Carbon\Carbon::now();
+      
+      $valid = $this->enroll->where([
+                    ['id', '=', $user['id']],
+                    ['created_time', 'LIKE', "%".($mytime->toDateString())."%"],
+                ])->get()->count();
+      return $valid;
     }
 }
