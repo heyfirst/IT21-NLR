@@ -27,12 +27,12 @@ $(document).ready(function(){
       }).done(function(msg){
         console.log(msg);
         if (msg.done) {
-          swal("จองและ!", "Your imaginary file has been deleted.", "success");
+          swal("จองและ!", "เรียบร้อยยยย ~.", "success");
           location.reload();
         }else if(msg.reserved){
-          swal("จองไม่ได้มีคนจองแล้ววว", "Your imaginary file has been deleted.", "warning");
+          swal("จองไม่ได้มีคนจองแล้ววว", "มึงไปจองที่อื่นเลยย ~.", "warning");
         }else if(msg.isday){
-          swal("จองไม่ได้ จองได้วันละครั้งจ้า", "Your imaginary file has been deleted.", "warning");
+          swal("จองไม่ได้ จองได้วันละครั้งจ้า", "ตามนั้นแหละ.", "warning");
         }
       });
 
