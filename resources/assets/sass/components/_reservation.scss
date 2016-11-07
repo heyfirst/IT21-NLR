@@ -30,8 +30,10 @@ body {
 
   .time {
     font-weight: 300;
-    span {
-      font-weight: 600;
-    }
+    span { font-weight: 600; }
+  }
+
+  .closed {
+    opacity: .6;
   }
 }

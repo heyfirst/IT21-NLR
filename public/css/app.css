@@ -32,6 +32,9 @@ body {
   .reservation .time span {
     font-weight: 600; }
 
+.reservation .closed {
+  opacity: .6; }
+
 .booking h3 {
   font-weight: 600;
   margin-top: 0; }
@@ -51,7 +54,10 @@ body {
 
 .booking .rack-list h4 {
   font-size: 24px;
-  margin: 4px 6px; }
+  margin: 6px; }
+
+.booking .rack-list .seat {
+  margin-bottom: 6px; }
 
 .booking .rack-list .fa {
   padding-right: 6px; }
