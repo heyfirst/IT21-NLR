@@ -43,4 +43,14 @@ class BookingController extends MainController
     $result = $this->BookingRepository->booking($user,$data);
     return array('done'=>true);
   }
+
+  public function cancelSeat(Request $request){
+    $user = Auth::user();
+    $data = $request->all();
+
+    if ($this->BookingRepository->cancelSeat($user,$data)) {
+      return array('done'=>true);
+    }
+    return array('error'=>true);
+  }
 }

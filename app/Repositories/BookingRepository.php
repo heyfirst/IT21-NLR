@@ -95,4 +95,15 @@ class BookingRepository implements BookingRepositoryInterface {
                 ->count();
       return $valid;
     }
+
+    public function cancelSeat($user,$data){
+      $result = $this->enroll->where([
+          ['id' ,'=', $user['id']],
+          ['section_id', '=', $data['section_id']],
+          ['rack', '=', $data['rack']],
+          ['seat', '=', $data['seat']]
+      ])->delete();
+
+      return $result;
+    }
 }

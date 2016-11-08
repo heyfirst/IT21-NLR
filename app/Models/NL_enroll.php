@@ -8,6 +8,7 @@ class NL_enroll extends Model
 {
     protected $table = 'nl_enrolls';
 
-    
+    protected $dates = ['deleted_at'];
+
 
 }

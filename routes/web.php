@@ -21,9 +21,14 @@ Route::group(['middleware' => 'web'], function () {
 
   Route::group(['middleware' => 'auth'], function () {
 
+    // Reservation & Booking Routes
     Route::get('/reservation', 'ReserveController@index');
     Route::get('/booking/{id}', 'BookingController@index');
     Route::post('/booking/bookingseat', 'BookingController@bookingSeat');
+    Route::post('/booking/cancelseat', 'BookingController@cancelSeat');
+
+    // Profile Routes
+    Route::get('/profile','ProfileController@index');
 
   });
 
