@@ -38,7 +38,7 @@
                 @foreach ($section['enroll'] as $key => $enroll)
                 <div class="progress progress-striped active">
                   <div class="progress-bar {{ ($enroll>0 && $enroll<40) ? "progress-bar-primary":"" }}{{ ($enroll>40 && $enroll<80) ? "progress-bar-warning":"" }}{{ ($enroll>80 && $enroll<110) ? "progress-bar-danger":"" }}"
-                    role="progressbar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" style="width: {{ $enroll }}%;">
+                    role="progressbar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" style="width: {{ ($section['status'] == 0) ? $enroll : 0 }}%;">
                   </div>
                 </div>
                 @endforeach
