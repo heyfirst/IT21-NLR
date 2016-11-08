@@ -58,7 +58,7 @@
             @if (isset($user))
             <ul class="nav navbar-nav">
               <li class="active"><a href="/reservation">Reservation</a></li>
-              <li class=""><a href="/profile">My Booking</a></li>
+              {{-- <li class=""><a href="/profile">My Booking</a></li> --}}
             </ul>
               <div class="navbar-right">
                 <p class="navbar-text">Signed in as {{ $user['name'] }}</p>
