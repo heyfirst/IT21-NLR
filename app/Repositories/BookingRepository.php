@@ -106,4 +106,17 @@ class BookingRepository implements BookingRepositoryInterface {
 
       return $result;
     }
+
+    public function alreadyDone($section){
+      $query = $this->section->where([
+          ['section_id','=',$section],
+          ['date','>=',Carbon\Carbon::now('Asia/Bangkok')->toDateString()],
+          ['start_time','<',Carbon\Carbon::now('Asia/Bangkok')->toTimeString()],
+        ])->get()->first();
+
+      if ($query == null) {
+        return false;
+      }
+      return true;
+    }
 }

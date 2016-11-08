@@ -72,7 +72,10 @@ $(document).ready(function(){
           location.reload();
         }else if(msg.error){
           swal("ลบการจองไม่ได้อะ", "มันไม่ใช่ ID มึงอะป่าววว ??.", "warning");
+        }else if(msg.already){
+          swal("มันจบไปแล้ว ห้ามลบบ !", "เก็บเป็นสถิติไง ห้ามลบบ ไม่อาววว.", "info");
         }
+
       });
     });
 

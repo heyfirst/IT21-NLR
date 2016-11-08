@@ -48,6 +48,10 @@ class BookingController extends MainController
     $user = Auth::user();
     $data = $request->all();
 
+    if($this->BookingRepository->alreadyDone($data['section_id'])){
+      return array('already'=>true);
+    }
+
     if ($this->BookingRepository->cancelSeat($user,$data)) {
       return array('done'=>true);
     }
