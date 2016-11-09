@@ -17,8 +17,8 @@ class BookingController extends MainController
     $this->BookingRepository = $BookingRepository;
   }
 
-  public function index($section = null)
-  {
+  // For View
+  public function index($section = null){
     $section = $this->BookingRepository->getSection($section);
 
     $content = array(
@@ -27,6 +27,19 @@ class BookingController extends MainController
     );
 
     return view('pages.booking',$content);
+  }
+
+  // For API
+  public function getSection(Request $request = null){
+
+    if(Request == null){
+      return array();
+    }
+
+    $data = $request->all();
+    $section = $this->BookingRepository->getSection($data['section_id']);
+
+    return $section;
   }
 
   public function bookingSeat(Request $request){

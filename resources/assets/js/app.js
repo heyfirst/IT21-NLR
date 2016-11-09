@@ -13,7 +13,9 @@ require('./bootstrap');
  * the application, or feel free to tweak this setup for your needs.
  */
 
-Vue.component('example', require('./components/Example.vue'));
+// Vue.component('example', require('./components/Example.vue'));
+Vue.component('booking-button', require('./components/BookingButton.vue'));
+Vue.component('booking-modal', require('./components/BookingModal.vue'));
 
 const app = new Vue({
     el: '#app'

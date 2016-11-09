@@ -1,9 +1,8 @@
-
-@extends('layouts.default')
-
-@section('content')
-  <booking-modal section-id="{{$section['section_id']}}"></booking-modal>
-  {{-- <div class="container booking" data-section-id="{{$section['section_id']}}">
+<template>
+  <div class="">
+    {{ sectionId }}
+  </div>
+  <!-- <div class="container booking" data-section-id="{{$section['section_id']}}">
     <div class="panel">
       <div class="panel-body">
         <div class="row">
@@ -34,5 +33,17 @@
         </div>
       </div>
     </div>
-  </div> --}}
-@endsection
+  </div> -->
+</template>
+
+<script>
+    export default {
+        mounted() {
+            console.log('Component ready.')
+        },
+        data :{
+
+        },
+        props: ['sectionId'],
+    }
+</script>
