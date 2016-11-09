@@ -19,6 +19,8 @@ class ReserveController extends MainController
 
   public function index()
   {
+    $user = Auth::user();
+
     $sections = $this->SectionRepository->getSection();
 
     foreach ($sections as $section) {
@@ -34,12 +36,13 @@ class ReserveController extends MainController
       ]);
 
       array_add($section,'remain',$this->SectionRepository->getSectionRemain($section['section_id']));
+      array_add($section,'youarein',$this->SectionRepository->checkYouAreIn($section['section_id'],$user));
     }
 
 
     $content = array(
       'sections' => $sections,
-      'user' => Auth::user()
+      'user' => $user
     );
 
     return view('pages.reservation',$content);

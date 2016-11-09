@@ -1,6 +1,7 @@
 $(document).ready(function(){
 
   $('[data-toggle="tooltip"]').tooltip()
+  $('.sections').mixItUp();
 
   $('.free').click(function(){
 
@@ -78,7 +79,6 @@ $(document).ready(function(){
 
       });
     });
-
   });
 
 });

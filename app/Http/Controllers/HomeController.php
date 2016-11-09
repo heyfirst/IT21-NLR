@@ -23,6 +23,11 @@ class HomeController extends MainController
      */
     public function index()
     {
-        return view('pages.login');
+      return view('pages.login');
+    }
+
+    public function abc()
+    {
+        return "6666";
     }
 }

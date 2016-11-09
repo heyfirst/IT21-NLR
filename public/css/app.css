@@ -35,6 +35,9 @@ body {
 .reservation .closed {
   opacity: .6; }
 
+.reservation .mix {
+  display: none; }
+
 .booking h3 {
   font-weight: 600;
   margin-top: 0; }

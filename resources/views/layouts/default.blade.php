@@ -88,8 +88,9 @@
     <script type="text/javascript" src="/vendor/jquery/dist/jquery.min.js"></script>
     <script type="text/javascript" src="/vendor/bootstrap/dist/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="/vendor/sweetalert/dist/sweetalert.min.js"></script>
+    <script type="text/javascript" src="/vendor/mixitup-master/build/jquery.mixitup.min.js"></script>
     <script type="text/javascript" src="/js/script.js"></script>
-    <script type="text/javascript" src="/js/app.js"></script>
+    {{-- <script type="text/javascript" src="/js/app.js"></script> --}}
 
   </body>
 </html>

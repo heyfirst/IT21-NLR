@@ -4,9 +4,15 @@
 @section('content')
   <div class="container reservation">
     <div class="row">
+      <div class="col-xs-12">
+        <button type="button" class="btn btn-info btn-all filter" data-filter="all">ALL</button>
+        <button type="button" class="btn btn-success btn-you-are-in filter" data-filter=".you-are-in">YOU ARE IN</button>
+      </div>
+    </div>
+    <div class="row sections">
       {{-- START ROUND --}}
       @foreach ($sections as $section)
-      <div class="col-sm-4">
+      <div class="col-sm-4 mix {{ $section['youarein'] ? "you-are-in":"" }}">
         <h4>{{ date('D d ,F', strtotime($section['date'])) }}</h4>
         <div class="panel {{ ($section['status'] == 1) ? "closed":""}}">
           @if ($section['remain'] != 0 && $section['status'] == 0)

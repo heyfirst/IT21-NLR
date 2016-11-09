@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Repositories\SectionRepositoryInterface;
+// use App\Repositories\SectionRepositoryInterface;
 use Auth;
 use Illuminate\Http\Request;
 
@@ -11,12 +11,19 @@ class ProfileController extends MainController
 
   protected $ProfileRepository;
 
-  public function __construct(ProfileRepositoryInterface $ProfileRepository){
+  public function __construct(){
     parent::__construct();
-    $this->$ProfileRepository = $ProfileRepository;
+    // ProfileRepositoryInterface $ProfileRepository
+    // $this->$ProfileRepository = $ProfileRepository;
   }
 
   public function index(){
-    return null;
+
+    $content = array(
+      'name' => "",
+      'old' => 6
+    );
+
+    return view('pages.profile',$content);
   }
 }

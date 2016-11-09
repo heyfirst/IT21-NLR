@@ -49,14 +49,21 @@ class SectionRepository implements SectionRepositoryInterface {
     }
 
     public function booking($std_id,$section,$rack,$seat){
-
       $this->enroll->insert([
         'std_id' => $std_id,
         'section_id' => $section,
         'rack' => $rack,
         'seat' => $seat,
       ]);
+    }
 
+    public function checkYouAreIn($section,$user){
+      $result = $this->enroll->where([
+        ['section_id' ,'=', $section],
+        ['id' ,'=', $user['id']]
+        ])->get()->count();
+
+      return ($result > 0);
     }
 
 }
