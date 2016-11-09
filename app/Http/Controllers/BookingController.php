@@ -48,6 +48,8 @@ class BookingController extends MainController
     $user = Auth::user();
     $data = $request->all();
 
+    // return $this->BookingRepository->alreadyDone($data['section_id']);
+
     if($this->BookingRepository->alreadyDone($data['section_id'])){
       return array('already'=>true);
     }
