@@ -32,7 +32,7 @@
           <div class="panel-body">
             <div class="row">
               <div class="col-xs-6 text-right">
-                <h3>ROUND {{ $section['section_id'] }}</h3>
+                <h3>ROUND<br>{{ $section['section_id'] }}</h3>
                 <h4 class="time">START <span>{{ date('g:i A', strtotime($section['start_time'])) }}</span></h4>
                 <h4 class="time">END <span>{{ date('g:i A', strtotime($section['end_time'])) }}</span></h4>
                 @if ($section['status'] == 1)
