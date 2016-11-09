@@ -1,7 +1,14 @@
 $(document).ready(function(){
 
   $('[data-toggle="tooltip"]').tooltip()
-  $('.sections').mixItUp();
+  $('.sections').mixItUp({
+    layout: {
+        display: 'block'
+    },
+    animation: {
+        effects: 'fade'
+    }
+  });
 
   $('.free').click(function(){
 
