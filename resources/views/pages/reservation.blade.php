@@ -13,7 +13,7 @@
     <div class="row sections">
       {{-- START ROUND --}}
       @foreach ($sections as $section)
-      <div class="col-sm-4 mix {{ ($section['remain'] != 0)?"free":"" }} {{ $section['youarein'] ? "you-are-in":"" }}">
+      <div class="col-sm-4 mix {{ ($section['remain'] != 0 && $section['status'] == 0)?"free":"" }} {{ $section['youarein'] ? "you-are-in":"" }}">
         <h4>{{ date('D d ,F', strtotime($section['date'])) }}</h4>
         <div class="panel {{ ($section['status'] == 1) ? "closed":""}}">
           @if ($section['remain'] != 0 && $section['status'] == 0)
