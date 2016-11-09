@@ -1,6 +1,7 @@
 $(document).ready(function(){
 
   $('[data-toggle="tooltip"]').tooltip()
+  
   $('.sections').mixItUp({
     layout: {
         display: 'block'
