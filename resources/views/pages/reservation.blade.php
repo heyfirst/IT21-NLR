@@ -14,7 +14,7 @@
               เหลือ {{ $section['remain'] }} ที่
             </span>
           @elseif($section['remain'] == 0 && $section['status'] == 0)
-            <span class="badge bade-danger">
+            <span class="badge badge-danger">
               เต็ม
             </span>
           @else
