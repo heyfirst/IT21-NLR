@@ -6,14 +6,14 @@
     <div class="row">
       <div class="col-xs-12">
         <button type="button" class="btn btn-primary btn-all filter" data-filter="all">ALL</button>
-        <button type="button" class="btn btn-info btn-free filter" data-filter=".free">FREE</button>
+        <button type="button" class="btn btn-info btn-free-section filter" data-filter=".free-section">FREE</button>
         <button type="button" class="btn btn-success btn-you-are-in filter" data-filter=".you-are-in">YOU ARE IN</button>
       </div>
     </div>
     <div class="row sections">
       {{-- START ROUND --}}
       @foreach ($sections as $section)
-      <div class="col-sm-4 mix {{ ($section['remain'] != 0 && $section['status'] == 0)?"free":"" }} {{ $section['youarein'] ? "you-are-in":"" }}">
+      <div class="col-sm-4 mix {{ ($section['remain'] != 0 && $section['status'] == 0)?"free-section":"" }} {{ $section['youarein'] ? "you-are-in":"" }}">
         <h4>{{ date('D d ,F', strtotime($section['date'])) }}</h4>
         <div class="panel {{ ($section['status'] == 1) ? "closed":""}}">
           @if ($section['remain'] != 0 && $section['status'] == 0)
