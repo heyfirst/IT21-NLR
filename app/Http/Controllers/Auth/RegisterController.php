@@ -122,11 +122,14 @@ class RegisterController extends Controller
     {
       return Socialite::driver('google')->redirect();
     }
-    
+
     public function handleGoogleProviderCallback(){
+
+      $socialUser = Socialite::driver('google')->user();
       try
       {
-        $socialUser = Socialite::driver('google')->user();
+
+        $accessTokenResponseBody = $user->accessTokenResponseBody;
       }
       catch (\Exception $e)
       {
