@@ -125,27 +125,36 @@ class RegisterController extends Controller
 
     public function handleGoogleProviderCallback(){
 
-      $socialUser = Socialite::driver('google')->user();
-      dd($socialUser);
-
       try
       {
-
+        $socialUser = Socialite::driver('google')->user();
       }
       catch (\Exception $e)
       {
           return redirect('/');
       }
 
-
-      $user = User::where('social_token_id',$socialUser->getId())->first();
+      $user = $this->UserRepository->getUserFromGoogle($socialUser->getId());
 
       if(!$user){
-        $user = User::create([
-          'social_user_id' => $socialUser->getId(),
-          'name' => $socialUser->getName(),
-          'email' => $socialUser->getEmail(),
-        ]);
+
+        $userByEmail = $this->UserRepository->getUserFromEmail($socialUser->getEmail());
+
+        if (!$userByEmail) {
+
+          $user = User::create([
+            'name' => $socialUser->getName(),
+            'email' => $socialUser->getEmail(),
+          ]);
+
+          // create social user
+          $user_id = $this->UserRepository->createSocialUser($user);
+
+        }else{
+
+          $user_id = $this->UserRepository->createSocialUser($socialUser);
+          $user = User::where('id',$user_id)->first();
+        }
 
       }
       Auth::login($user, true);
