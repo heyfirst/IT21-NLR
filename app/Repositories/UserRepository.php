@@ -17,5 +17,17 @@ class UserRepository implements UserRepositoryInterface {
   public function getAllUser(){
     return $this->user->get();
   }
+
+  public function getUserFromGoogle(){
+
+  }
+
+  public function getUserFromEmail(){
+
+  }
+
+  public function createSocialUser(){
+
+  }
   
 }

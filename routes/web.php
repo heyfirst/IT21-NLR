@@ -35,6 +35,8 @@ Route::group(['middleware' => 'web'], function () {
     // Profile Routes
     Route::get('/profile','ProfileController@index');
 
+    // dashboard
+    Route::get('/dashboard', 'DashboardController@index');
   });
 
 });

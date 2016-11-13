@@ -69,4 +69,10 @@ body {
 .booking .rack-list .rack {
   margin-bottom: 10px; }
 
+.dashboard h2 {
+  margin-top: 15px; }
+
+.dashboard .subtitle {
+  font-weight: 300; }
+
 /*# sourceMappingURL=app.css.map */
