@@ -6,4 +6,19 @@
   .subtitle {
     font-weight: 300;
   }
+
+  h3 {
+    margin-top: 0;
+    font-size: 27px;
+  }
+
+  .progress {
+    height: 6px;
+    margin-bottom: 14px;
+  }
+
+  .time {
+    font-weight: 300;
+    span { font-weight: 600; }
+  }
 }
