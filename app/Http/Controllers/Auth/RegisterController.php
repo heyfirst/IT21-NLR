@@ -75,7 +75,11 @@ class RegisterController extends Controller
      *
      * @return Response
      */
-    public function redirectToProvider()
+
+    // ----------------------------
+    // -- Facebook Autentication --
+    // ----------------------------
+    public function redirectToFacebookProvider()
     {
         return Socialite::driver('facebook')->redirect();
     }
@@ -84,7 +88,7 @@ class RegisterController extends Controller
      *
      * @return Response
      */
-    public function handleProviderCallback()
+    public function handleFacebookProviderCallback()
     {
         // 1 check if the user exists in our database with facebook_id
         // 2 if not create a new user
@@ -109,5 +113,40 @@ class RegisterController extends Controller
           Auth::login($user, true);
 
         return redirect()->to('/reservation');
+    }
+
+    // ----------------------------
+    // --- Google Autentication ---
+    // ----------------------------
+    public function redirectToGoogleProvider()
+    {
+      return Socialite::driver('google')->redirect();
+    }
+    
+    public function handleGoogleProviderCallback(){
+      try
+      {
+        $socialUser = Socialite::driver('google')->user();
+      }
+      catch (\Exception $e)
+      {
+          return redirect('/');
+      }
+
+      dd($socialUser);
+
+      $user = User::where('social_token_id',$socialUser->getId())->first();
+
+      if(!$user){
+        $user = User::create([
+          'social_user_id' => $socialUser->getId(),
+          'name' => $socialUser->getName(),
+          'email' => $socialUser->getEmail(),
+        ]);
+
+      }
+      Auth::login($user, true);
+
+      return redirect()->to('/reservation');
     }
 }

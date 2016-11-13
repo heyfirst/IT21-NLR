@@ -13,8 +13,13 @@
 
 Route::group(['middleware' => 'web'], function () {
   Route::get('/','HomeController@index');
-  Route::get('/signin-facebook', 'Auth\RegisterController@redirectToProvider');
-  Route::get('/signin-facebook-callback', 'Auth\RegisterController@handleProviderCallback');
+
+  // facebook OAuth
+  Route::get('/signin-facebook', 'Auth\RegisterController@redirectToFacebookProvider');
+  Route::get('/signin-facebook-callback', 'Auth\RegisterController@handleFacebookProviderCallback');
+  // google OAuth
+  Route::get('/signin-google', 'Auth\RegisterController@redirectToGoogleProvider');
+  Route::get('/signin-google-callback', 'Auth\RegisterController@handleGoogleProviderCallback');
 
   // Authentication routes... added from the docs!
   Route::get('logout', 'Auth\LoginController@logout');
