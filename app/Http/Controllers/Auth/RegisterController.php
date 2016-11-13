@@ -126,17 +126,17 @@ class RegisterController extends Controller
     public function handleGoogleProviderCallback(){
 
       $socialUser = Socialite::driver('google')->user();
+      dd($socialUser);
+
       try
       {
 
-        $accessTokenResponseBody = $user->accessTokenResponseBody;
       }
       catch (\Exception $e)
       {
           return redirect('/');
       }
 
-      dd($socialUser);
 
       $user = User::where('social_token_id',$socialUser->getId())->first();
 
