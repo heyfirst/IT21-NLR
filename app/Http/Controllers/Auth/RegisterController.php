@@ -93,6 +93,7 @@ class RegisterController extends Controller
         // 1 check if the user exists in our database with facebook_id
         // 2 if not create a new user
         // 3 login this user into our application
+
         try
         {
           $socialUser = Socialite::driver('facebook')->user();
