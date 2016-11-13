@@ -75,4 +75,17 @@ body {
 .dashboard .subtitle {
   font-weight: 300; }
 
+.dashboard h3 {
+  margin-top: 0;
+  font-size: 27px; }
+
+.dashboard .progress {
+  height: 6px;
+  margin-bottom: 14px; }
+
+.dashboard .time {
+  font-weight: 300; }
+  .dashboard .time span {
+    font-weight: 600; }
+
 /*# sourceMappingURL=app.css.map */

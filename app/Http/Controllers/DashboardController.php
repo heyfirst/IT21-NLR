@@ -7,8 +7,12 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Auth;
 
+use App\Repositories\BookingRepositoryInterface;
+use App\Repositories\SectionRepositoryInterface;
+
 class DashboardController extends MainController
 {
+
 
 
   protected $SectionRepository;
@@ -34,4 +38,10 @@ class DashboardController extends MainController
 
     return view('pages.dashboard',$content);
   }
+
+    public function indexByUser()
+    {
+      return view('pages.dashboard');
+    }
+
 }
