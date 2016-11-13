@@ -40,9 +40,9 @@ return [
         'redirect' => env('FACEBOOK_REDIRECT'),
     ],
     'google' => [
-        'client_id' => env('GOOGLE_ID'),
-        'client_secret' => env('GOOGLD_SECRET'),
-        'redirect' => env('GOOGLE_REDIRECT'),
+        'client_id' => env('GOOGLE_KEY'),
+        'client_secret' => env('GOOGLE_SECRET'),
+        'redirect' => env('GOOGLE_REDIRECT_URI'),
     ],
 
 ];
