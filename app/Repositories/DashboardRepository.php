@@ -48,7 +48,7 @@ class DashboardRepository implements DashboardRepositoryInterface {
   public function getHotSection()
   {
     $fullSection = $this->enroll->groupBy('section_id')->having('id', '=', 24)->get();
-    $fullSectionId = array_add($fullSection,['id' => ])
+    array_add($fullSectionId,['id' => $fullSection]);
 
     $firstEnroll = new Carbon();
     $lastEnroll = new Carbon();
@@ -61,4 +61,10 @@ class DashboardRepository implements DashboardRepositoryInterface {
     return $enrollByUser;
   }
 
+  public function getUserEnrollTimes()
+  {
+    //SELECT id, count(enroll_id) as time  FROM `nl_enrolls` GROUP by id ORDER by time desc;
+    $userEnrollTimes =  $this->enroll->SELECT('id','count(enroll_id) as time')->groupBy('id')->orderBy('time', 'desc')->get();
+    return $userEnrollTimes;
+  }
 }
