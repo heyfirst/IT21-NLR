@@ -10,6 +10,8 @@ use App\Repositories\SectionRepository;
 use App\Repositories\BookingRepository;
 use App\User;
 
+use Carbon\Carbon;
+
 class DashboardRepository implements DashboardRepositoryInterface {
 
   protected $social_user;
@@ -43,6 +45,20 @@ class DashboardRepository implements DashboardRepositoryInterface {
     return $sectionCount;
   }
 
+  public function getHotSection()
+  {
+    $fullSection = $this->enroll->groupBy('section_id')->having('id', '=', 24)->get();
+    $fullSectionId = array_add($fullSection,['id' => ])
 
+    $firstEnroll = new Carbon();
+    $lastEnroll = new Carbon();
+    $diff = $lastEnroll->dif($firstEnroll);
+  }
+
+  public function getEnrollByUser($userId)
+  {
+    $enrollByUser = $this->enroll->where('id','=',$userId)->get()->count();
+    return $enrollByUser;
+  }
 
 }

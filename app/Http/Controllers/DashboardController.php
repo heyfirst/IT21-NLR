@@ -10,13 +10,16 @@ use App\Repositories\SectionRepositoryInterface;
 use Illuminate\Http\Request;
 use Auth;
 
+use Carbon\Carbon;
+
 
 class DashboardController extends MainController
 {
-
+  protected $DashboardRepository;
   protected $SectionRepository;
   protected $UserRepository;
   protected $EnrollRepository;
+  protected $BookingRepository;
 
   public function __construct(DashboardRepositoryInterface $DashboardRepository)
   {
@@ -31,11 +34,16 @@ class DashboardController extends MainController
     $enrollCount = $this->DashboardRepository->getEnrollCount();
     $userCount = $this->DashboardRepository->getUserCount();
 
+
+    $user = Auth::user();
+    $userId = $user['id'];
+    $enrollByUser = $this->DashboardRepository->getEnrollByUser($userId);
     $content = array(
       'sectionCount' => $sectionCount,
       'enrollCount' => $enrollCount,
       'userCount' => $userCount,
-      'user' => Auth::user()
+      'enrollByUser' => $enrollByUser,
+      'user' => $user
     );
 
     return view('pages.dashboard',$content);
@@ -45,5 +53,7 @@ class DashboardController extends MainController
     {
       return view('pages.dashboard');
     }
+
+
 
 }
