@@ -20,7 +20,7 @@ class DashboardRepository implements DashboardRepositoryInterface {
   public function __construct(){
       $this->user = new User();
       $this->social_user = new NL_social_user();
-      $this->enroll = new NL_enrolls();
+      $this->enroll = new NL_enroll();
       $this->section = new NL_section();
   }
 
@@ -42,4 +42,7 @@ class DashboardRepository implements DashboardRepositoryInterface {
     $sectionCount = $this->section->get()->count();
     return $sectionCount;
   }
+
+
+
 }

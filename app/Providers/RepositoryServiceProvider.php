@@ -27,5 +27,6 @@ class RepositoryServiceProvider extends ServiceProvider
         App::bind('App\Repositories\SectionRepositoryInterface', 'App\Repositories\SectionRepository');
         App::bind('App\Repositories\BookingRepositoryInterface', 'App\Repositories\BookingRepository');
         App::bind('App\Repositories\UserRepositoryInterface', 'App\Repositories\UserRepository');
+        App::bind('App\Repositories\DashboardRepositoryInterface', 'App\Repositories\DashboardRepository');
     }
 }

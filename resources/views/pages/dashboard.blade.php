@@ -5,7 +5,8 @@
     <div class="col-sm-10 col-sm-offset-1">
       {{-- Row 1 --}}
       <div class="row">
-        {{-- จำนวน Section --}}
+        {{-- จำนวน section--}}
+          {{ $sectionCount }}
         <div class="col-sm-4">
           <div class="panel panel-info">
             <div class="panel-heading">SECTIONs</div>
@@ -14,7 +15,8 @@
             </div>
           </div>
         </div>
-        {{-- จำนวน User --}}
+        {{-- จำนวน user--}}
+        {{ $userCount }}
         <div class="col-sm-4">
           <div class="panel panel-info">
             <div class="panel-heading">USERs</div>
@@ -23,7 +25,8 @@
             </div>
           </div>
         </div>
-        {{-- จำนวนการ Enroll --}}
+        {{-- จำนวน enroll --}}
+        {{ $enrollCount }}
         <div class="col-sm-4">
           <div class="panel panel-info">
             <div class="panel-heading">ENROLLs</div>

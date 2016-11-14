@@ -3,17 +3,16 @@
 namespace App\Http\Controllers;
 
 
+use App\Repositories\DashboardRepositoryInterface;
+use App\Repositories\BookingRepositoryInterface;
+use App\Repositories\SectionRepositoryInterface;
 
 use Illuminate\Http\Request;
 use Auth;
 
-use App\Repositories\BookingRepositoryInterface;
-use App\Repositories\SectionRepositoryInterface;
 
 class DashboardController extends MainController
 {
-
-
 
   protected $SectionRepository;
   protected $UserRepository;
@@ -28,11 +27,14 @@ class DashboardController extends MainController
 
   public function index()
   {
-    $section = $this->BookingRepository->getSection($section);
-    $enroll = $this->DashboardRepository->getEnrollCount();
+    $sectionCount = $this->DashboardRepository->getSectionCount();
+    $enrollCount = $this->DashboardRepository->getEnrollCount();
+    $userCount = $this->DashboardRepository->getUserCount();
+
     $content = array(
-      'section' => $section,
-      'enroll' => $enroll,
+      'sectionCount' => $sectionCount,
+      'enrollCount' => $enrollCount,
+      'userCount' => $userCount,
       'user' => Auth::user()
     );
 
