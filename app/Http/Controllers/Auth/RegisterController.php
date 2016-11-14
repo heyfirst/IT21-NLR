@@ -9,6 +9,8 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use Socialite;
 use Auth;
 
+use App\Repositories\UserRepositoryInterface;
+
 class RegisterController extends Controller
 {
     /*
@@ -36,9 +38,10 @@ class RegisterController extends Controller
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(UserRepositoryInterface $UserRepository)
     {
         $this->middleware('guest');
+        $this->UserRepository = $UserRepository;
     }
 
     /**
