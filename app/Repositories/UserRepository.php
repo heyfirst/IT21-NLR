@@ -19,12 +19,12 @@ class UserRepository implements UserRepositoryInterface {
   }
 
   public function getUserByGoogleID($id){
-    $socialUser = $this->user
+    $socialUser = $this->social_user
       ->where('social_token_id',$id)
       ->where('provider','google')
       ->get()->first();
 
-    return $this->user->where('user_id',$socialUser['user_id'])->get()->first();
+    return $this->user->where('id',$socialUser['user_id'])->get()->first();
   }
 
   public function getUserFromEmail($email){
