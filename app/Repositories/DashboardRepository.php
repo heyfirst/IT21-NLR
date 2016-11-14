@@ -37,5 +37,9 @@ class DashboardRepository implements DashboardRepositoryInterface {
     return $userCount;
   }
 
-
+  public function getSectionCount()
+  {
+    $sectionCount = $this->section->get()->count();
+    return $sectionCount;
+  }
 }
