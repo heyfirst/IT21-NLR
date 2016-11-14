@@ -18,7 +18,7 @@ class UserRepository implements UserRepositoryInterface {
     return $this->user->get();
   }
 
-  public function getUserFromGoogle($id){
+  public function getUserByGoogleID($id){
     $socialUser = $this->user
       ->where('social_token_id',$id)
       ->where('provider','google')
@@ -38,7 +38,7 @@ class UserRepository implements UserRepositoryInterface {
       'social_token_id' => $socialUserId,
       'provider' => $provider,
     ]);
-    
+
     return $id;
 
   }
