@@ -99,7 +99,7 @@ class RegisterController extends Controller
         }
         catch (\Exception $e)
         {
-            return redirect('/');
+          return redirect('/');
         }
         $user = User::where('facebook_id',$socialUser->getId())->first();
 
@@ -131,10 +131,10 @@ class RegisterController extends Controller
       }
       catch (\Exception $e)
       {
-          return redirect('/');
+        return redirect('/');
       }
 
-      $user = $this->UserRepository->getUserFromGoogle($socialUser->getId());
+      $user = $this->UserRepository->getUserByGoogleID($socialUser->getId());
 
       if(!$user){
 
@@ -148,12 +148,14 @@ class RegisterController extends Controller
           ]);
 
           // create social user
-          $user_id = $this->UserRepository->createSocialUser($user);
+          $this->UserRepository->createSocialUser($user['id'],$socialUser->getId(),'google');
 
         }else{
 
-          $user_id = $this->UserRepository->createSocialUser($socialUser);
-          $user = User::where('id',$user_id)->first();
+          $user = User::where('email',$socialUser->getEmail())->first();
+
+          // create social user
+          $this->UserRepository->createSocialUser($user['id'],$socialUser->getId(),'google');
         }
 
       }
