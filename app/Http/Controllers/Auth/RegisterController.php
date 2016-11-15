@@ -97,6 +97,27 @@ class RegisterController extends Controller
         // 2 if not create a new user
         // 3 login this user into our application
 
+        // try
+        // {
+        //   $socialUser = Socialite::driver('facebook')->user();
+        // }
+        // catch (\Exception $e)
+        // {
+        //   return redirect('/');
+        // }
+        // $user = User::where('facebook_id',$socialUser->getId())->first();
+        //
+        // if(!$user)
+        //   $user = User::create([
+        //     'facebook_id' => $socialUser->getId(),
+        //     'name' => $socialUser->getName(),
+        //     'email' => $socialUser->getEmail(),
+        //   ]);
+        //
+        //   Auth::login($user, true);
+        //
+        // return redirect()->to('/reservation');
+
         try
         {
           $socialUser = Socialite::driver('facebook')->user();
@@ -105,16 +126,33 @@ class RegisterController extends Controller
         {
           return redirect('/');
         }
-        $user = User::where('facebook_id',$socialUser->getId())->first();
 
-        if(!$user)
-          $user = User::create([
-            'facebook_id' => $socialUser->getId(),
-            'name' => $socialUser->getName(),
-            'email' => $socialUser->getEmail(),
-          ]);
+        $user = $this->UserRepository->getUserByFacebookID($socialUser->getId());
 
-          Auth::login($user, true);
+        if(!$user){
+
+          $userByEmail = $this->UserRepository->getUserFromEmail($socialUser->getEmail());
+
+          if (!$userByEmail) {
+
+            $user = User::create([
+              'name' => $socialUser->getName(),
+              'email' => $socialUser->getEmail(),
+            ]);
+
+            // create social user
+            $this->UserRepository->createSocialUser($user['id'],$socialUser->getId(),'facebook');
+
+          }else{
+
+            $user = User::where('email',$socialUser->getEmail())->first();
+
+            // create social user
+            $this->UserRepository->createSocialUser($user['id'],$socialUser->getId(),'facebook');
+          }
+
+        }
+        Auth::login($user, true);
 
         return redirect()->to('/reservation');
     }

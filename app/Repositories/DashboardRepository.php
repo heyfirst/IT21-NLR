@@ -10,6 +10,7 @@ use App\Repositories\SectionRepository;
 use App\Repositories\BookingRepository;
 use App\User;
 
+use DB;
 use Carbon\Carbon;
 
 class DashboardRepository implements DashboardRepositoryInterface {
@@ -47,18 +48,44 @@ class DashboardRepository implements DashboardRepositoryInterface {
 
   public function getHotSection()
   {
-    $fullSection = $this->enroll->groupBy('section_id')->having('id', '=', 24)->get();
-    $fullSectionId = array_add($fullSection,['id' => ])
+    $fullSection = $this->enroll
+                    ->join('nl_sections','nl_sections.section_id','=','nl_enrolls.section_id')
+                    ->where('','','')
+                    // ->groupBy('nl_sections.section_id')
+                    // ->havingRaw('count(id) = 24')
+                    // ->select('nl_sections.section_id','count(nl_sections.enrolls)')
+                    ->get();
+    dd($fullSection);
+    $section =  $this->enroll
+                  ->get();
 
-    $firstEnroll = new Carbon();
-    $lastEnroll = new Carbon();
-    $diff = $lastEnroll->dif($firstEnroll);
+    return $section;
   }
 
   public function getEnrollByUser($userId)
   {
     $enrollByUser = $this->enroll->where('id','=',$userId)->get()->count();
     return $enrollByUser;
+  }
+
+  public function getTopUser(){
+    return $this->user
+                ->join('nl_enrolls','nl_enrolls.id','=','users.id')
+                ->groupBy('users.name')
+                ->orderByRaw('count(*) desc')
+                ->limit(10)
+                ->selectRaw('users.name , count(*) as "count" ')
+                ->get();
+  }
+
+  public function getLessUser(){
+    return $this->user
+                ->leftJoin('nl_enrolls','nl_enrolls.id','=','users.id')
+                ->groupBy('users.name')
+                ->orderByRaw('count(nl_enrolls.id) asc')
+                ->limit(10)
+                ->selectRaw('users.name , count(nl_enrolls.id) as "count" ')
+                ->get();
   }
 
 }

@@ -27,6 +27,15 @@ class UserRepository implements UserRepositoryInterface {
     return $this->user->where('id',$socialUser['user_id'])->get()->first();
   }
 
+  public function getUserByFacebookID($id){
+    $socialUser = $this->social_user
+      ->where('social_token_id',$id)
+      ->where('provider','facebook')
+      ->get()->first();
+
+    return $this->user->where('id',$socialUser['user_id'])->get()->first();
+  }
+
   public function getUserFromEmail($email){
     return $this->user->where('email',$email)->get()->first();
   }

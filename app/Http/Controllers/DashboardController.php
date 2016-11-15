@@ -30,10 +30,12 @@ class DashboardController extends MainController
 
   public function index()
   {
+
     $sectionCount = $this->DashboardRepository->getSectionCount();
     $enrollCount = $this->DashboardRepository->getEnrollCount();
     $userCount = $this->DashboardRepository->getUserCount();
 
+    // $section = $this->DashboardRepository->getHotSection();
 
     $user = Auth::user();
     $userId = $user['id'];
@@ -43,7 +45,8 @@ class DashboardController extends MainController
       'enrollCount' => $enrollCount,
       'userCount' => $userCount,
       'enrollByUser' => $enrollByUser,
-      'user' => $user
+      'topUser' => $this->DashboardRepository->getTopUser(),
+      'lessUser' => $this->DashboardRepository->getLessUser()
     );
 
     return view('pages.dashboard',$content);
