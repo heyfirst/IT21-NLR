@@ -48,4 +48,16 @@ class ReserveController extends MainController
     return view('pages.reservation',$content);
   }
 
+  public function createSection(Request $request){
+    $user = Auth::user();
+    $data = $request->all();
+
+    if($user['role_id'] == 1){
+      $this->SectionRepository->CreateSection($data);
+    }
+
+    return redirect()->to('/reservation');
+
+  }
+
 }

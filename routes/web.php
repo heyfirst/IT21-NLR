@@ -31,6 +31,7 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('/booking/{id}', 'BookingController@index');
     Route::post('/booking/bookingseat', 'BookingController@bookingSeat');
     Route::post('/booking/cancelseat', 'BookingController@cancelSeat');
+    Route::post('/section/createSection', 'ReserveController@createSection');
 
     // Profile Routes
     Route::get('/profile','ProfileController@index');

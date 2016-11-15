@@ -41,7 +41,7 @@ class DashboardController extends MainController
     $userId = $user['id'];
     $enrollByUser = $this->DashboardRepository->getEnrollByUser($userId);
 
-    $userEnrollTimes = $this->DashboardRepository->getUserEnrollTimes();
+    // $userEnrollTimes = $this->DashboardRepository->getUserEnrollTimes();
     $content = array(
       'sectionCount' => $sectionCount,
       'enrollCount' => $enrollCount,
@@ -51,8 +51,8 @@ class DashboardController extends MainController
       'lessUser' => $this->DashboardRepository->getLessUser()
     );
 
-    return view('pages.dashboard',$content);
-  }
+      return view('pages.dashboard',$content);
+    }
 
     public function indexByUser()
     {

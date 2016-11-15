@@ -90,9 +90,14 @@ class DashboardRepository implements DashboardRepositoryInterface {
 
   public function getUserEnrollTimes()
   {
-    //SELECT id, count(enroll_id) as time  FROM `nl_enrolls` GROUP by id ORDER by time desc;
-    $userEnrollTimes =  $this->enroll->SELECT('id','count(enroll_id) as time')->groupBy('id')->orderBy('time', 'desc')->get();
-    return $userEnrollTimes;
+    $result = $this->enroll
+                ->groupBy(function($enroll) {
+                    return Carbon::parse($enroll['created_time'])->hour(); // grouping by years
+                  })
+                ->get();
+
+    dd($result);
+    return $result;
   }
 
 }
