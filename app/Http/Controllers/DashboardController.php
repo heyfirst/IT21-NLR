@@ -40,6 +40,8 @@ class DashboardController extends MainController
     $user = Auth::user();
     $userId = $user['id'];
     $enrollByUser = $this->DashboardRepository->getEnrollByUser($userId);
+
+    $userEnrollTimes = $this->DashboardRepository->getUserEnrollTimes();
     $content = array(
       'sectionCount' => $sectionCount,
       'enrollCount' => $enrollCount,

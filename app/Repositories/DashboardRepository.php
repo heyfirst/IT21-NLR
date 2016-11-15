@@ -88,4 +88,11 @@ class DashboardRepository implements DashboardRepositoryInterface {
                 ->get();
   }
 
+  public function getUserEnrollTimes()
+  {
+    //SELECT id, count(enroll_id) as time  FROM `nl_enrolls` GROUP by id ORDER by time desc;
+    $userEnrollTimes =  $this->enroll->SELECT('id','count(enroll_id) as time')->groupBy('id')->orderBy('time', 'desc')->get();
+    return $userEnrollTimes;
+  }
+
 }
