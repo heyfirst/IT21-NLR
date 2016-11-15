@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "978a0141ff1bdec808fae586513a069b",
-    "content-hash": "827c33a78984b8858c7948e27f7cca40",
+    "hash": "5f2c000bad23d0511fa34ff34c3a907a",
+    "content-hash": "beffda88c78ca5fe00a53df5bc936151",
     "packages": [
         {
             "name": "barryvdh/laravel-debugbar",
@@ -214,6 +214,51 @@
                 "string"
             ],
             "time": "2015-11-06 14:35:42"
+        },
+        {
+            "name": "fx3costa/laravelchartjs",
+            "version": "1.3.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/fxcosta/laravel-chartjs.git",
+                "reference": "997361cd0e50dda9547dbf58bafbc2d1d6c7dd11"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/fxcosta/laravel-chartjs/zipball/997361cd0e50dda9547dbf58bafbc2d1d6c7dd11",
+                "reference": "997361cd0e50dda9547dbf58bafbc2d1d6c7dd11",
+                "shasum": ""
+            },
+            "require": {
+                "laravel/framework": "5.*",
+                "php": ">=5.5.9"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Fx3costa\\Laravelchartjs\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Felix",
+                    "email": "fx3costa@gmail.com"
+                }
+            ],
+            "description": "Simples package para facilitar e automatizar o uso de graficos no Laravel 5.x usando a lib Chartjs",
+            "keywords": [
+                "chart",
+                "chartjs",
+                "fx3costa",
+                "graphics",
+                "laravel5",
+                "reports"
+            ],
+            "time": "2016-04-09 05:14:01"
         },
         {
             "name": "guzzlehttp/guzzle",

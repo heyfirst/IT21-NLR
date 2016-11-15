@@ -42,8 +42,8 @@ class SectionRepository implements SectionRepositoryInterface {
       $this->section->insert(
         [
           'date' => $data['date'],
-          'start_time' => $data['date'],
-          'end_time' => $data['date']
+          'start_time' => $data['start'],
+          'end_time' => $data['end']
         ]
       );
     }
@@ -65,5 +65,6 @@ class SectionRepository implements SectionRepositoryInterface {
 
       return ($result > 0);
     }
+
 
 }
