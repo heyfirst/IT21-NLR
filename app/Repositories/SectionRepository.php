@@ -15,7 +15,8 @@ class SectionRepository implements SectionRepositoryInterface {
     }
 
     public function getSection(){
-      $result = $this->section->get();
+      // $result = $this->section->get();
+      $result = $this->section->where('section_id','>','18')->get();
       return $result;
     }
 
