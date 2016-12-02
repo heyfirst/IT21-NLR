@@ -20,8 +20,8 @@ class UserRepository implements UserRepositoryInterface {
 
   public function getUserByGoogleID($id){
     $socialUser = $this->social_user
-      ->where('social_token_id',$id)
-      ->where('provider','google')
+      ->where('social_token_id','=',$id)
+      ->where('provider','=','google')
       ->get()->first();
 
     return $this->user->where('id',$socialUser['user_id'])->get()->first();
@@ -29,15 +29,15 @@ class UserRepository implements UserRepositoryInterface {
 
   public function getUserByFacebookID($id){
     $socialUser = $this->social_user
-      ->where('social_token_id',$id)
-      ->where('provider','facebook')
+      ->where('social_token_id','=',$id)
+      ->where('provider','=','facebook')
       ->get()->first();
 
-    return $this->user->where('id',$socialUser['user_id'])->get()->first();
+    return $this->user->where('id','=',$socialUser['user_id'])->get()->first();
   }
 
   public function getUserFromEmail($email){
-    return $this->user->where('email',$email)->get()->first();
+    return $this->user->where('email','=',$email)->get()->first();
   }
 
   public function createSocialUser($userId,$socialUserId,$provider){
